@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class MainCameraController : MonoBehaviour
 {
 
-    public float rotateSpeed = 10.0f, movementSpeed = 10.0f, zoomSpeed = 10.0f;
+    public float rotateSpeed = 10.0f, movementSpeed = 10.0f, zoomSpeed = 10.0f, zoomMin = -30f, zoomMax = 40f;
     
 
     private void Update()
@@ -96,7 +96,7 @@ public class MainCameraController : MonoBehaviour
             transform.position -= scrolling;
         }
         // Ограничение
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -20f, 30f), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, zoomMin, zoomMax), transform.position.z);
 
     }
 
